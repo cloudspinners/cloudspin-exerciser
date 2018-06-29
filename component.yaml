@@ -4,8 +4,3 @@ component: exerciser
 service: test
 region: eu-west-1
 assume_role: false
-
-# You probably want to override these in component-local.yaml
-github_owner: cloudspinners
-github_repo: cloudspin-exerciser
-github_branch: master

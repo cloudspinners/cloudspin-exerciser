@@ -1,0 +1,11 @@
+---
+vars:
+  region: "%{hiera('region')}"
+  component: "%{hiera('component')}"
+  estate: "%{hiera('estate')}"
+  test_users:
+    - test1
+    - test2
+
+state:
+  type: local
