@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-title 'API users'
+title 'IAM users for API testing'
 
 api_users = attribute('test_users', description: 'List of test user accounts expected')
 component = attribute('component', description: 'Which component things should be tagged')
