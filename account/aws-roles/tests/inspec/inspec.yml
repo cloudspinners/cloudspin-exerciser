@@ -1,0 +1,9 @@
+name: aws-accounts
+title: AWS Accounts
+maintainer: Kief Morris
+copyright: Kief Morris
+copyright_email: cloudspin@kief.com
+license: Apache-2.0
+summary: Validate AWS Account and policy creation
+version: 0.1.0
+description: Controls to validate AWS Account and policy creation
