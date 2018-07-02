@@ -7,6 +7,7 @@ component = attribute('component', description: 'Which component things should b
 estate = attribute('estate', description: 'Which estate things should be tagged')
 test_user_api_keys = attribute('test_user_api_keys', description: 'The API keys configured at the component level')
 
+
 api_users.each { |base_username|
   describe aws_iam_user(username: "api_user-#{component}-#{estate}-#{base_username}") do
     it { should exist }

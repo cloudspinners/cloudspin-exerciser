@@ -7,6 +7,15 @@ resource "aws_iam_user" "api_test_user" {
   path = "/user/"
 }
 
+# {
+#   "Version": "2012-10-17",
+#   "Statement": {
+#     "Effect": "Allow",
+#     "Action": "sts:AssumeRole",
+#     "Resource": "arn:aws:iam::ACCOUNT-ID-WITHOUT-HYPHENS:role/Test*"
+#   }
+# }
+
 # resource "aws_iam_access_key" "api_test_user" {
 #   count = "${length(var.test_users)}"
 #   user    = "${aws_iam_user.api_test_user.name}"
