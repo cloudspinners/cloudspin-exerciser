@@ -3,7 +3,6 @@ estate: cloudspin
 component: exerciser
 service: test
 region: eu-west-1
-assume_role: false
 
 # You may need to override this in component-local.yaml
 aws_profile_for_bootstrap: default
