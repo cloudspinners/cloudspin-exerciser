@@ -3,7 +3,7 @@ vars:
   region: "%{hiera('region')}"
   component: "%{hiera('component')}"
   estate: "%{hiera('estate')}"
-  aws_profile: "%{hiera('aws_admin_profile')}"
+  aws_profile_for_bootstrap: "%{hiera('aws_profile_for_bootstrap')}"
   test_users:
     - test1
     - test2
@@ -14,5 +14,5 @@ state:
 
 inspec:
   aws_profile:
-    default: "%{hiera('aws_admin_profile')}"
+    default: "%{hiera('aws_profile_for_bootstrap')}"
     unprivileged: "%{hiera('aws_unprivileged_profile')}"
