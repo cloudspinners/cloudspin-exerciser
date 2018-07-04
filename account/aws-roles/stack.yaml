@@ -7,6 +7,12 @@ vars:
   test_users:
     - test1
     - test2
+  pgp_key_for_secrets: "%{hiera('pgp_key_for_secrets')}"
 
 state:
   type: local
+
+inspec:
+  aws_profile:
+    default: "%{hiera('aws_admin_profile')}"
+    unprivileged: "%{hiera('aws_unprivileged_profile')}"

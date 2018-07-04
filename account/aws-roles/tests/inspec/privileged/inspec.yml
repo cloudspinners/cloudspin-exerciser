@@ -1,9 +1,9 @@
 name: aws-accounts
-title: AWS Accounts
+title: AWS Accounts - Running as privileged
 maintainer: Kief Morris
 copyright: Kief Morris
 copyright_email: cloudspin@kief.com
 license: Apache-2.0
-summary: Validate AWS Account and policy creation
+summary: Validate AWS Account and policy creation using a privileged account
 version: 0.1.0
 description: Controls to validate AWS Account and policy creation
