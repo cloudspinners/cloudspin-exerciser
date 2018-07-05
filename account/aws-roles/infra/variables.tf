@@ -2,5 +2,7 @@
 variable "region" { default = "eu-west-1" }
 variable "component" {}
 variable "estate" {}
-variable "aws_profile_for_bootstrap" { default = "default" }
+variable "api_users" { type = "list" }
+variable "aws_profile" { default = "default" }
 variable "pgp_key_for_secrets" {}
+variable "assume_role_arn" { default = "" }

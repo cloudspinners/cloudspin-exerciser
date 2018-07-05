@@ -1,0 +1,17 @@
+
+api_users:
+  - test-unprivileged-1
+  - test-unprivileged-2
+  - test-stack-manager
+  - test-administrator
+  - kief-cloudspin
+
+roles:
+  - stack-manager:
+      users:
+        - test-stack-manager
+        - kief-cloudspin
+  - administrator:
+      users:
+        - test-administrator
+        - kief-cloudspin

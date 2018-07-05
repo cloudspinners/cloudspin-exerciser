@@ -5,8 +5,8 @@ output "stack_manager_role_arn" {
 
 # This role can be assumed by the specified user(s)
 resource "aws_iam_role" "stack_manager" {
-  name = "stack_manager-${var.component}-${var.estate}"
-  description = "Can create and destroy ${var.component} stacks in ${var.estate}"
+  name = "stack_manager-${var.component}"
+  description = "Can create and destroy ${var.component} stacks"
 
   assume_role_policy = <<END_ASSUME_ROLE_POLICY
 {
@@ -16,7 +16,7 @@ resource "aws_iam_role" "stack_manager" {
       "Effect": "Allow",
       "Action": "sts:AssumeRole",
       "Principal": {
-        "AWS": [ "${join("\",\"", aws_iam_user.api_test_user.*.arn)}" ]
+        "AWS": [ "${join("\",\"", aws_iam_user.api_user.*.arn)}" ]
       }
     }
   ]
@@ -25,8 +25,8 @@ END_ASSUME_ROLE_POLICY
 }
 
 resource "aws_iam_policy" "rights_for_ssm_parameters" {
-    name        = "ssm-paramater-access-for-${var.component}-${var.estate}"
-    description = "Can get and put parameters for ${var.component} in ${var.estate}"
+    name        = "ssm-paramater-access-for-${var.component}"
+    description = "Can get and put parameters for ${var.component}"
     policy = <<END_POLICY
 {
   "Version": "2012-10-17",

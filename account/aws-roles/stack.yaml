@@ -3,16 +3,21 @@ vars:
   region: "%{hiera('region')}"
   component: "%{hiera('component')}"
   estate: "%{hiera('estate')}"
-  aws_profile_for_bootstrap: "%{hiera('aws_profile_for_bootstrap')}"
-  test_users:
-    - test1
-    - test2
+  aws_profile: "%{hiera('aws_profile')}"
+  api_users: "%{hiera('api_users')}"
   pgp_key_for_secrets: "%{hiera('pgp_key_for_secrets')}"
+  assume_role_arn: "%{hiera('admin_role_arn')}"
 
 state:
   type: local
 
-inspec:
-  aws_profile:
-    default: "%{hiera('aws_profile_for_bootstrap')}"
-    unprivileged: "%{hiera('aws_unprivileged_profile')}"
+test_vars:
+  created_api_users:
+    unprivileged:
+      - test-unprivileged-1
+      - test-unprivileged-2
+    stack-manager:
+      - test-stack-manager
+    administrator:
+      - test-administrator
+

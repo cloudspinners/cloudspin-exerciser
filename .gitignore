@@ -34,3 +34,4 @@ run/logs/
 
 # Local configuration
 component-local.yaml
+users-local.yaml

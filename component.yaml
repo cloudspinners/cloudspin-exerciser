@@ -4,5 +4,8 @@ component: exerciser
 service: test
 region: eu-west-1
 
-# You may need to override this in component-local.yaml
-aws_profile_for_bootstrap: default
+# You will need to override this in component-local.yaml
+aws_profile: OVERRIDE_ME
+
+admin_role_arn: "arn:aws:iam::%{hiera('aws_account_id')}:role/stack_manager-%{hiera('component')}"
+stack_manager_role_arn: "arn:aws:iam::%{hiera('aws_account_id')}:role/stack_manager-%{hiera('component')}"
