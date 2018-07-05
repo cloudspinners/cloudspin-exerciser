@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-title 'IAM users for API testing'
+title 'IAM users created to run cloudspin'
 
 component = attribute('component', description: 'Which component things should be tagged')
 api_user_list = attribute('api_users', description: 'IAM users defined for API access')

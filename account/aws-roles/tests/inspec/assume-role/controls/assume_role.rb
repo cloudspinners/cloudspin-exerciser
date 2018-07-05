@@ -1,9 +1,7 @@
 # encoding: utf-8
 
-title 'Unprivileged IAM users for API testing'
+title 'Validate that the profiles and users are set up to assume-role as expected'
 
-api_users = attribute('test_users', description: 'List of test user accounts expected')
-component = attribute('component', description: 'Which component things should be tagged')
 aws_profile = attribute('aws_profile', description: 'The aws_profile set in the component configuration')
 assume_role_arn = attribute('assume_role_arn', description: 'The IAM role to assume for managing this stack')
 

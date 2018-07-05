@@ -111,7 +111,8 @@ Best practice is for each user to have their own PGP key, so that only they are 
 To decrypt your secret access key:
 
 ```bash
-echo ENCRYPTED_STRING | GPG_TTY=$(tty) base64 --decode | gpg -d
+export GPG_TTY=$(tty)
+echo ENCRYPTED_STRING | base64 --decode | gpg -d
 ```
 
 ### Add your IAM user to your local AWS configuration
