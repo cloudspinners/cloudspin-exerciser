@@ -50,20 +50,20 @@ WARNING: Don't use your root user to apply aws-roles! You should not have AWS ac
 
 ### Add a managed IAM user for yourself to the component configuration
 
-In the file `users.yaml` in the root of this repository, add an entry to the `users` section for yourself, and also add yourself to the stack-managers and administrators group:
+In the file `users.yaml` in the root of this repository, add an entry to the `api_users` section for yourself, and also add yourself to the stack-managers and administrators group:
 
 ```yaml
 api_users:
-  - kief_cloudspin:
+  - kief-cloudspin:
       pgp_public_key: xxxxxxx
 
 roles:
   - stack-manager:
       users:
-        - kief_cloudspin
+        - kief-cloudspin
   - administrator:
       users:
-        - kief_cloudspin
+        - kief-cloudspin
 ```
 
 
@@ -121,7 +121,7 @@ Now that you have bootstrapped an IAM User for yourself, you can add it to your 
 Go back to your `~/.aws/credentials` file, and add your new IAM user credentials to a new profile:
 
 ```ini
-[kief_cloudspin]
+[kief-cloudspin]
 aws_access_key_id = AKIA........
 aws_secret_access_key = xxxxxxxxxxx
 ```
@@ -129,7 +129,7 @@ aws_secret_access_key = xxxxxxxxxxx
 Then, edit your `component-local.yaml` file, and change the `aws_profile` configuration value:
 
 ```yaml
-aws_profile: kief_cloudspin
+aws_profile: kief-cloudspin
 ```
 
 Finally, create or edit your local AWS configuration file `~/.aws/config` to add the roles that cloudspin will assume when managing infrastructure:
@@ -137,7 +137,7 @@ Finally, create or edit your local AWS configuration file `~/.aws/config` to add
 ```ini
 [profile assume_role_for_account_aws-roles]
 role_arn = arn:aws:iam::000000000000:role/stack_manager-exerciser
-source_profile = kief_cloudspin
+source_profile = kief-cloudspin
 ```
 
 The *role_arn* value will have been included in the output from the `./go account:aws-roles:provision` command.

@@ -10,14 +10,3 @@ vars:
 
 state:
   type: local
-
-test_vars:
-  created_api_users:
-    unprivileged:
-      - test-unprivileged-1
-      - test-unprivileged-2
-    stack-manager:
-      - test-stack-manager
-    administrator:
-      - test-administrator
-
