@@ -1,11 +1,11 @@
 
-output "stack_manager_role_arn" {
-  value = "${aws_iam_role.stack_manager.arn}"
+output "spin_stack_manager_role_arn" {
+  value = "${aws_iam_role.spin_stack_manager.arn}"
 }
 
 # This role can be assumed by the specified user(s)
-resource "aws_iam_role" "stack_manager" {
-  name = "stack_manager-${var.component}"
+resource "aws_iam_role" "spin_stack_manager" {
+  name = "spin_stack_manager-${var.component}"
   description = "Can create and destroy ${var.component} stacks"
 
   assume_role_policy = <<END_ASSUME_ROLE_POLICY
@@ -24,13 +24,13 @@ resource "aws_iam_role" "stack_manager" {
 END_ASSUME_ROLE_POLICY
 }
 
-resource "aws_iam_role_policy_attachment" "attach_poweruser_policy_to_role" {
-  role       = "${aws_iam_role.stack_manager.name}"
+resource "aws_iam_role_policy_attachment" "attach_poweruser_policy_to_stack_manager_role" {
+  role       = "${aws_iam_role.spin_stack_manager.name}"
   policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess"
 }
 
-resource "aws_iam_role_policy_attachment" "attach_parameter_policy_to_manager_role" {
-  role       = "${aws_iam_role.stack_manager.name}"
+resource "aws_iam_role_policy_attachment" "attach_parameter_policy_to_stack_manager_role" {
+  role       = "${aws_iam_role.spin_stack_manager.name}"
   policy_arn = "${aws_iam_policy.rights_for_ssm_parameters.arn}"
 }
 

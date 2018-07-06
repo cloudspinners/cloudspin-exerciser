@@ -1,11 +1,11 @@
 
-output "component_administrator_role_arn" {
-  value = "${aws_iam_role.component_administrator.arn}"
+output "spin_account_manager_role_arn" {
+  value = "${aws_iam_role.spin_account_manager.arn}"
 }
 
 # This role can be assumed by the specified user(s)
-resource "aws_iam_role" "component_administrator" {
-  name = "component_administrator-${var.component}"
+resource "aws_iam_role" "spin_account_manager" {
+  name = "spin_account_manager-${var.component}"
   description = "Can create and destroy IAM resources in ${var.component} stacks"
 
   assume_role_policy = <<END_ASSUME_ROLE_POLICY
@@ -24,13 +24,13 @@ resource "aws_iam_role" "component_administrator" {
 END_ASSUME_ROLE_POLICY
 }
 
-resource "aws_iam_role_policy_attachment" "attach_sysadmin_policy_to_role" {
-  role       = "${aws_iam_role.component_administrator.name}"
+resource "aws_iam_role_policy_attachment" "attach_sysadmin_policy_to_account_manager_role" {
+  role       = "${aws_iam_role.spin_account_manager.name}"
   policy_arn = "arn:aws:iam::aws:policy/job-function/SystemAdministrator"
 }
 
-resource "aws_iam_role_policy_attachment" "attach_parameter_policy_to_administrator_role" {
-  role       = "${aws_iam_role.component_administrator.name}"
+resource "aws_iam_role_policy_attachment" "attach_parameter_policy_to_account_manager_role" {
+  role       = "${aws_iam_role.spin_account_manager.name}"
   policy_arn = "${aws_iam_policy.rights_for_ssm_parameters.arn}"
 }
 

@@ -30,12 +30,6 @@ resource "aws_iam_group_policy" "rights_to_assume_role" {
 ENDOFPOLICY
 }
 
-# resource "aws_iam_role_policy_attachment" "attach_assume_role_policy_to_user" {
-#   count = "${length(var.api_users)}"
-#   role       = "${aws_iam_role.api_user.name}"
-#   policy_arn = "${aws_iam_policy.rights_to_assume_role.arn}"
-# }
-
 resource "aws_iam_access_key" "api_user" {
   count = "${length(var.api_users)}"
   user    = "${aws_iam_user.api_user.*.name[count.index]}"

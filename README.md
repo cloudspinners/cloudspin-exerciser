@@ -130,7 +130,7 @@ aws_profile: edd_cloudspin
 
 ### Add the roles to assume to your local AWS configuration (spin user)
 
-Create or edit your local AWS configuration file `~/.aws/config` to add the roles that cloudspin will assume when managing infrastructure. These should be AWS profiles named according to the convention: "`*assume*_${IAM_ROLE}_${COMPONENT}`".
+Create or edit your local AWS configuration file `~/.aws/config` to add the roles that cloudspin will assume when managing infrastructure. These should be AWS profiles named according to the convention: "`*assume*_${IAM_ROLE}_${COMPONENT}`". Following this naming convention is needed to make sure that cloudspin works correctly (particularly for running inspec tests).
 
 So a template for the profile in `~/.aws/config` is:
 
@@ -211,7 +211,6 @@ AWS_PROFILE=bootstrap_cloudspin ADMIN_ROLE_ARN= ./go account:aws-roles:plan
 AWS_PROFILE=bootstrap_cloudspin ADMIN_ROLE_ARN= ./go account:aws-roles:provision
 ```
 
-
 ## Run the tests
 
 ```bash
@@ -222,3 +221,15 @@ This runs some checks on the user accounts configured in the project, to make su
 
 These tests also ensure that your own local AWS credentials are working correctly; that they can assume the administrator role, and that they do not have more permissions than necessary. If you left your bootstrap credentials in the configuration, a test should fail.
 
+## Clean up
+
+It's recommended to remove the IAM user you used for bootstrapping (e.g. bootstrap_cloudspin), so that all of your IAM users are managed as code. In the event that something goes wrong with the managed accounts, you'd need to use your root credentials to log in and fix things.
+
+
+## Tearing it down
+
+If you want to remove the IAM roles and users defined by this stack, you'll need to follow the bootstrap steps as above, including having a manually created bootstrap user, add their credentials to your aws credentials file, and then run the destroy target:
+
+```bash
+AWS_PROFILE=bootstrap_cloudspin ADMIN_ROLE_ARN= ./go account:aws-roles:destroy
+```
