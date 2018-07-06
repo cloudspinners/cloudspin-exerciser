@@ -1,6 +1,6 @@
 ---
 estate: cloudspin
-component: exerciser
+component: skeleton
 service: test
 region: eu-west-1
 
