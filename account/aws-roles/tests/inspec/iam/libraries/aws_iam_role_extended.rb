@@ -11,6 +11,20 @@ class AwsIamRoleExtended < Inspec.resource(1)
   include AwsSingularResourceMixin
   attr_reader :description, :role_name, :arn, :assume_role_policy, :max_session_duration
 
+  def allowed_users
+    extract_principal_arns
+  end
+
+  def extract_principal_arns
+    @assume_role_policy['Statement'].map { |statement|
+      if statement.key?('Principal')
+        if statement['Principal'].key?('AWS')
+          statement['Principal']['AWS']
+        end
+      end
+    }.flatten
+  end
+
   def to_s
     "IAM Role Extended #{role_name}"
   end

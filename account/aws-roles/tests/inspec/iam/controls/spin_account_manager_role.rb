@@ -8,9 +8,6 @@ describe aws_iam_role_extended("spin_account_manager-#{component}") do
   it { should exist }
 end
 
-# policy_struct = aws_iam_policy("spin_stack_manager-#{component}").policy
-
-# describe "spin_stack_manager-#{component} policy" do
-#   subject { policy_struct['Principle'].first['Condition'] }
-#   it { should include 'NotIpAddress' }
-# end
+describe aws_iam_role_extended("spin_account_manager-#{component}").allowed_users do
+  it { should_not be_empty }
+end
