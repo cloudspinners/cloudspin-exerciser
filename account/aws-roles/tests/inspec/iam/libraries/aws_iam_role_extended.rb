@@ -11,8 +11,14 @@ class AwsIamRoleExtended < Inspec.resource(1)
   include AwsSingularResourceMixin
   attr_reader :description, :role_name, :arn, :assume_role_policy, :max_session_duration
 
-  def allowed_users
+  def allowed_iam_user_arns
     extract_principal_arns
+  end
+
+  def allowed_iam_user_names
+    extract_principal_arns.map { |arn|
+      arn.gsub(/^.+\//, '')
+    }
   end
 
   def extract_principal_arns
