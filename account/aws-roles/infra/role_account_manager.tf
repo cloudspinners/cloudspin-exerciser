@@ -7,6 +7,7 @@ output "spin_account_manager_role_arn" {
 resource "aws_iam_role" "spin_account_manager" {
   name = "spin_account_manager-${var.component}"
   description = "Can create and destroy IAM resources in ${var.component} stacks"
+  depends_on = ["aws_iam_user.api_user"]
 
   assume_role_policy = <<END_ASSUME_ROLE_POLICY
 {
