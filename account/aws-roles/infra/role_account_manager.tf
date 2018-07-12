@@ -18,7 +18,7 @@ resource "aws_iam_role" "spin_account_manager" {
       "Action": "sts:AssumeRole",
       "Principal": {
         "AWS": [
-          "${join("\",\"", formatlist("arn:aws:iam::%s:user/%s", data.aws_caller_identity.current_aws_account.account_id, var.spin_account_manager-skeleton-users))}"
+          "${join("\",\"", formatlist("arn:aws:iam::%s:user/%s", data.aws_caller_identity.current_aws_account.account_id, var.spin_account_manager-users))}"
         ]
       }
     }

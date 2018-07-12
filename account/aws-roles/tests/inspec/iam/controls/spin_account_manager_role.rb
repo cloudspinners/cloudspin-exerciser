@@ -11,9 +11,9 @@ end
 
 describe aws_iam_role_extended("spin_account_manager-#{component}").allowed_iam_user_names do
   it { should_not be_empty }
-  it { should =~ configured_api_users.select { |username, user_info|
-      user_info.key?('roles') && user_info['roles'].include?("spin_account_manager-#{component}")
-    }.map { |username, user_info| username }
+  it { should =~ configured_api_users.select { |username, user_configuration_from_yaml|
+      user_configuration_from_yaml.key?('roles') && user_configuration_from_yaml['roles'].include?("spin_account_manager")
+    }.map { |username, user_configuration_from_yaml| username }
   }
 end
 

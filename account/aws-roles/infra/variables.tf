@@ -7,11 +7,11 @@ variable "spin_api_users" {
   type = "list"
   default = []
 }
-variable "spin_account_manager-skeleton-users" {
+variable "spin_account_manager-users" {
   type = "list"
   default = []
 }
-variable "spin_stack_manager-skeleton-users" {
+variable "spin_stack_manager-users" {
   type = "list"
   default = []
 }
