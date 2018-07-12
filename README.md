@@ -206,9 +206,9 @@ aws_secret_access_key = xxxxxxxxxxx
 Once you have this all in place, you can plan and provision the stack. Do this by applying the stack, setting environment variables to use the bootstrap credentials.
 
 ```bash
-AWS_PROFILE=bootstrap_cloudspin ADMIN_ROLE_ARN= ./go account:aws-roles:plan
+AWS_PROFILE=bootstrap_cloudspin BOOTSTRAP_ARN= ./go account:aws-roles:plan
 # Evaluate the output before proceeding
-AWS_PROFILE=bootstrap_cloudspin ADMIN_ROLE_ARN= ./go account:aws-roles:provision
+AWS_PROFILE=bootstrap_cloudspin BOOTSTRAP_ARN= ./go account:aws-roles:provision
 ```
 
 ## Run the tests
@@ -231,5 +231,5 @@ It's recommended to remove the IAM user you used for bootstrapping (e.g. bootstr
 If you want to remove the IAM roles and users defined by this stack, you'll need to follow the bootstrap steps as above, including having a manually created bootstrap user, add their credentials to your aws credentials file, and then run the destroy target:
 
 ```bash
-AWS_PROFILE=bootstrap_cloudspin ADMIN_ROLE_ARN= ./go account:aws-roles:destroy
+AWS_PROFILE=bootstrap_cloudspin BOOTSTRAP_ARN= ./go account:aws-roles:destroy
 ```

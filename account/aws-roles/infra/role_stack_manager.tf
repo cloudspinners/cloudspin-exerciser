@@ -16,7 +16,9 @@ resource "aws_iam_role" "spin_stack_manager" {
       "Effect": "Allow",
       "Action": "sts:AssumeRole",
       "Principal": {
-        "AWS": [ "${join("\",\"", aws_iam_user.api_user.*.arn)}" ]
+        "AWS": [ 
+          "${join("\",\"", formatlist("arn:aws:iam::%s:user/%s", data.aws_caller_identity.current_aws_account.account_id, var.spin_stack_manager-skeleton-users))}"
+        ]
       }
     }
   ]

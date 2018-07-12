@@ -7,5 +7,7 @@ region: eu-west-1
 # You will need to override this in component-local.yaml
 aws_profile: OVERRIDE_ME
 
-spin_account_manager_role_arn: "arn:aws:iam::%{hiera('aws_account_id')}:role/spin_account_manager-%{hiera('component')}"
+
 spin_stack_manager_role_arn: "arn:aws:iam::%{hiera('aws_account_id')}:role/spin_stack_manager-%{hiera('component')}"
+spin_account_manager_role_arn: "arn:aws:iam::%{hiera('aws_account_id')}:role/spin_account_manager-%{hiera('component')}"
+bootstrap_arn: "%{hiera('spin_account_manager_role_arn')}"

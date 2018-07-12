@@ -16,7 +16,9 @@ resource "aws_iam_role" "spin_account_manager" {
       "Effect": "Allow",
       "Action": "sts:AssumeRole",
       "Principal": {
-        "AWS": [ "${join("\",\"", aws_iam_user.api_user.*.arn)}" ]
+        "AWS": [
+          "${join("\",\"", formatlist("arn:aws:iam::%s:user/%s", data.aws_caller_identity.current_aws_account.account_id, var.spin_account_manager-skeleton-users))}"
+        ]
       }
     }
   ]
@@ -27,6 +29,11 @@ END_ASSUME_ROLE_POLICY
 resource "aws_iam_role_policy_attachment" "attach_sysadmin_policy_to_account_manager_role" {
   role       = "${aws_iam_role.spin_account_manager.name}"
   policy_arn = "arn:aws:iam::aws:policy/job-function/SystemAdministrator"
+}
+
+resource "aws_iam_role_policy_attachment" "attach_iam_full_policy_to_account_manager_role" {
+  role       = "${aws_iam_role.spin_account_manager.name}"
+  policy_arn = "arn:aws:iam::aws:policy/IAMFullAccess"
 }
 
 resource "aws_iam_role_policy_attachment" "attach_parameter_policy_to_account_manager_role" {
