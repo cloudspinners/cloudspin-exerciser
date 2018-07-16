@@ -15,6 +15,10 @@ variable "spin_stack_manager-users" {
   type = "list"
   default = []
 }
+variable "spin_delivery_manager-users" {
+  type = "list"
+  default = []
+}
 
 variable "aws_profile" { default = "default" }
 variable "pgp_key_for_secrets" {}
