@@ -1,27 +1,3 @@
-PATH
-  remote: ../aws_encrypted_bucket
-  specs:
-    aws_encrypted_bucket (0.0.1)
-      aws-sdk (~> 2.11)
-
-PATH
-  remote: ../aws_ssh_key
-  specs:
-    aws_ssh_key (0.1.0)
-      aws-sdk (~> 2.11)
-
-PATH
-  remote: ../rake_cloudspin
-  specs:
-    rake_cloudspin (0.0.1)
-      aws_encrypted_bucket
-      aws_ssh_key
-      confidante
-      inspec
-      rake_dependencies
-      rake_fly
-      rake_terraform
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -32,14 +8,16 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    aws-sdk (2.11.78)
-      aws-sdk-resources (= 2.11.78)
-    aws-sdk-core (2.11.78)
+    aws-sdk (2.11.89)
+      aws-sdk-resources (= 2.11.89)
+    aws-sdk-core (2.11.89)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.78)
-      aws-sdk-core (= 2.11.78)
+    aws-sdk-resources (2.11.89)
+      aws-sdk-core (= 2.11.89)
     aws-sigv4 (1.0.3)
+    aws_ssh_key (0.1.0)
+      aws-sdk (~> 2.11)
     azure_mgmt_resources (0.16.0)
       ms_rest_azure (~> 0.10.0)
     builder (3.2.3)
@@ -181,7 +159,7 @@ GEM
       googleauth (~> 0.6.2)
       grpc (>= 1.7.2, < 2.0)
       rly (~> 0.2.3)
-    google-protobuf (3.6.0-universal-darwin)
+    google-protobuf (3.6.0)
     googleapis-common-protos (1.3.7)
       google-protobuf (~> 3.0)
       googleapis-common-protos-types (~> 1.0)
@@ -196,7 +174,7 @@ GEM
       multi_json (~> 1.11)
       os (~> 0.9)
       signet (~> 0.7)
-    grpc (1.13.0-universal-darwin)
+    grpc (1.13.0)
       google-protobuf (~> 3.1)
       googleapis-common-protos-types (~> 1.0.0)
     grpc-google-iam-v1 (0.6.9)
@@ -217,7 +195,7 @@ GEM
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     inifile (3.0.0)
-    inspec (2.2.34)
+    inspec (2.2.35)
       addressable (~> 2.4)
       faraday (>= 0.9.0)
       faraday_middleware (~> 0.12.2)
@@ -280,6 +258,12 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (3.0.2)
     rake (12.3.1)
+    rake_cloudspin (0.0.2)
+      aws_ssh_key
+      confidante
+      rake_dependencies
+      rake_fly
+      rake_terraform
     rake_dependencies (0.15.1)
       hamster (~> 3.0)
       minitar (~> 0.6)
@@ -371,10 +355,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws_encrypted_bucket!
-  aws_ssh_key!
+  aws_ssh_key
+  inspec
   rake
-  rake_cloudspin!
+  rake_cloudspin
 
 BUNDLED WITH
    1.16.2
